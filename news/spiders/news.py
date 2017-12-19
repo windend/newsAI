@@ -15,14 +15,15 @@ class sinaNews(scrapy.Spider):
         'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
     }
     allowed_domains = ['anker.com']
-    start_urls = ['https://www.anker.com/']
+    start_urls = ['https://www.anker.com/']#换网址
 
     def parse(self, response):
         items = []
-        for sel in response.xpath('/div'):
+        for sel in response.xpath('//a'):
             item = NewsItem()
-            item['name'] = sel.xpath('a/text()').extract()
-            item['image_urls'] = sel.xpath('a/img/@src').extract()
+            # item['name'] = sel.xpath('a/text()').extract()
+            item['image_urls'] = sel.xpath(
+                'img/@src[contains(.,".jpg")]').extract()
             # item['decription'] = sel.xpath('text()').extract()
             yield item
             items.append(item)

@@ -16,13 +16,13 @@ class NewsPipeline(object):
         return item
 
 
-class NewsDownloadPipeline(object):
+class NewsDownloadPipeline(ImagesPipeline):
     default_headers = {
         'accept': 'image/webp,image/*,*/*;q=0.8',
         'accept-encoding': 'gzip, deflate, sdch, br',
         'accept-language': 'zh-CN,zh;q=0.8,en;q=0.6',
         'cookie': 'bid=yQdC/AzTaCw',
-        'referer': 'https://www.douban.com/photos/photo/2370443040/',
+        'referer': 'https://www.anker.com/',
         'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/52.0.2743.116 Safari/537.36',
     }
 
@@ -37,3 +37,6 @@ class NewsDownloadPipeline(object):
             raise DropItem("Item contains no images")
         item['image_paths'] = image_paths
         return item
+
+    def file_path():
+        pass

@@ -65,9 +65,9 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 ITEM_PIPELINES = {
-    'news.pipelines.NewsDownloadPipeline': 300,
+    'news.pipelines.NewsDownloadPipeline': 1,
 }
-IMAGES_STORE = 'C:\\anker'
+IMAGES_STORE = 'C:\\Users\\Bootun\\Pictures\\anker'
 IMAGE_EXPIRES = 90
 
 # Enable and configure the AutoThrottle extension (disabled by default)
