@@ -8,10 +8,11 @@
 from scrapy.pipelines.images import ImagesPipeline
 from scrapy.exceptions import DropItem
 from scrapy import Request
-from scrapy import log
+import os
 
 
 class NewsPipeline(object):
+
     def process_item(self, item, spider):
         return item
 
@@ -35,8 +36,12 @@ class NewsDownloadPipeline(ImagesPipeline):
         image_paths = [x['path'] for ok, x in results if ok]
         if not image_paths:
             raise DropItem("Item contains no images")
-        item['image_paths'] = image_paths
+        # item['image_paths'] = image_paths
+        newname = [str(x) + '.jpg' for x in range(0, 100)]
+        # if item['name']:
+        #     newname = [x + '.jpg' for x in item['name']]
+        for i in range(0, len(image_paths)):
+            os.renames("/Users/funny/Pictures/test/" +
+                       image_paths[i], "/Users/funny/Pictures/test/full/" + newname[i])
+        # item['image_paths'] = newname
         return item
-
-    def file_path():
-        pass
